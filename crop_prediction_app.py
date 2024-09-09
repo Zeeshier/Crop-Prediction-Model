@@ -1,20 +1,11 @@
 
 #import libraries
-import os
 import streamlit as st
 import numpy as np
 import pickle 
 
-
-# Get the directory of the current script
-current_dir = os.path.dirname(__file__)
-
-# Construct the full path to the model file
-model_path = os.path.join(current_dir, 'crop_model.pkl')
-
 # Load the model
-with open(model_path, 'rb') as file:
-    model = pickle.load(file)
+model = pickle.load(open('crop_model.pkl', 'rb'))
 
 # Set a custom page configuration
 st.set_page_config(page_title="Crop Prediction App ", page_icon="🌱", layout="centered", initial_sidebar_state="expanded")
@@ -33,10 +24,10 @@ st.markdown("<h1 style='text-align: center; color: green;'> Crop Prediction App 
 
 # Get user input
 def get_user_input():
-    n = st.number_input("Nitrogen ", value=0)
-    p = st.number_input("Phosphorus ", value=0)
-    k = st.number_input("Potassium", value=0)
-    ph = st.number_input("ph", value=0)
+    n = st.number_input("Nitrogen(0-140) ", value=0)
+    p = st.number_input("Phosphorus(5-145) ", value=0)
+    k = st.number_input("Potassium(5-205)", value=0)
+    ph = st.number_input("ph(3.5-9.93)", value=0)
     return np.array([[n, p, k, ph]])
 
 # Get prediction
