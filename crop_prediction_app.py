@@ -1,11 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle 
-from PIL import Image
 
-
-
-# Assuming you saved it using pickle
 with open('.\crop_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
@@ -20,7 +16,7 @@ This app predicts the most suitable crop based on the provided values for Nitrog
 Made by Zeeshan Ahmad!
 """)
 
-# Title with custom styling
+# Title 
 st.markdown("<h1 style='text-align: center; color: green;'> Crop Prediction App 🌾</h1>", unsafe_allow_html=True)
 
 
@@ -34,7 +30,8 @@ def get_user_input():
 
 # Get prediction
 input_data = get_user_input()
-# Prediction button with custom color
+
+# Prediction button
 if st.button('Predict Crop'):
     prediction = model.predict(input_data)
     st.markdown(f"<h2 style='text-align: center; color: darkbrown;'>🌱 The predicted crop is: {prediction[0].upper()}</h3>", unsafe_allow_html=True)
