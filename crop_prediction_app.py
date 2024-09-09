@@ -6,7 +6,7 @@ from PIL import Image
 
 
 # Assuming you saved it using pickle
-with open('.\model\crop_model.pkl', 'rb') as file:
+with open('.\crop_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 # Set a custom page configuration
